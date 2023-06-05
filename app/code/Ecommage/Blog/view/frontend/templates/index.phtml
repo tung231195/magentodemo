@@ -1,0 +1,46 @@
+
+<div id="blog_list">
+        <table class="table">
+        <thead>
+            <tr>
+            <th scope="col">#</th>
+            <th scope="col"><?= $block->escapeHtml(__('Title')); ?></th>
+            <th scope="col"><?= $block->escapeHtml(__('Created Date')); ?></th>
+            <th scope="col"><?= $block->escapeHtml(__('Updated Date')); ?></th>
+            <th scope="col"><?= $block->escapeHtml(__('Edit')); ?></th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php if($block->getAllBlogs()): ?>
+            <?php foreach ($block->getAllBlogs() as $blog): ?>
+                <tr>
+                    <th scope="row"><?= $blog->getId(); ?></th>
+                    <td><?= $block->escapeHtml($blog->getTitle()); ?></td>
+                    <td><?= $block->escapeHtml($blog->getData('created_at')); ?></td>
+                    <td><?= $block->escapeHtml($blog->getData('updated_at')); ?></td>
+                    <td> <a href="<?= $block->getBaseUrl(); ?>blog/blog/edit/id/<?=$blog->getId()?>" class="btn btn-primary"><?= $block->escapeHtml(__('Edit')); ?></a></td>
+                </tr>
+            <?php endforeach; ?>
+            <?php endif; ?>
+        </tbody>
+        </table>
+</div>
+
+<p> <a href="<?= $block->getBaseUrl(); ?>blog/blog/add"  class="btn btn-primary"><?= $block->escapeHtml(__('Add New')); ?></a></p>
+    
+<?php
+
+return; 
+
+$formData = [
+    'divElement'       =>  '#testdiv',
+];
+$serializedFormData = $this->helper('Magento\Framework\Json\Helper\Data')->jsonEncode($formData);
+?>
+<script type="text/x-magento-init">
+    {
+        "*": {
+            "blogrequire": <?php /* @noEscape */ echo $serializedFormData; ?>
+        }
+    }
+</script>

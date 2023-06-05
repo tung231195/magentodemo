@@ -1,0 +1,39 @@
+<?php 
+$allBlogs = $block->getAllBlogs();
+if($allBlogs):
+?> 
+  
+    <div class="blog-list owl-carousel owl-theme">
+       
+            <?php foreach($allBlogs as $blog): ?>        
+                    <div class="item"><?= $blog->getTitle();?></div>
+            <?php endforeach; ?>    
+        
+    </div>
+<?php endif; ?>
+
+<script type="text/javascript">
+require([
+    'jquery',
+    "owl"
+], function($){
+  
+    $('.owl-carousel').owlCarousel({
+        loop:true,
+        margin:10,
+        nav:true,
+        responsive:{
+            0:{
+                items:1
+            },
+            600:{
+                items:3
+            },
+            1000:{
+                items:3
+            }
+        }
+    })
+
+});
+</script>

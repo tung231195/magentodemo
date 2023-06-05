@@ -1,0 +1,19 @@
+<?php if($block->getBlogHelperData()->isCustomerLogin()): ?>
+    <form class="row g-3" action="<?= $block->getBaseUrl(); ?>blog/blog/save"  method="POST">
+    <div class="col-auto">
+        <label for="staticTitle" class="title mp-4">Title</label>
+        <input type="text"  class="form-control-plaintext" name="title" value="">
+    </div>
+    <div class="form-floating">
+        <textarea class="form-control" placeholder="Leave a comment here" name="content" style="height: 100px"></textarea>
+        <label for="floatingContent">Comments</label>
+    </div>
+    <div class="col-auto">
+        <button type="submit" class="btn btn-primary mb-3">Create New Post</button>
+    </div>
+    </form>
+
+    <script type="text/javascript">require(['bootstrap']);</script>
+<?php else: ?>
+        <h2><?= $block->escapeHtml(__('Pls, Login to Add new Post')); ?></h2>
+<?php endif; ?>

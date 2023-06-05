@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Ecommage_FirstModule::firstmodule" title="Ecommage Ext" module="Ecommage_FirstModule" sortOrder="51" resource="Ecommage_FirstModule::firstmodule"/>
+        <add id="Ecommage_FirstModule::firstmodule_configuration" title="Configuration" module="Ecommage_FirstModule" sortOrder="99" parent="Ecommage_FirstModule::firstmodule" action="adminhtml/system_config/edit/section/firstmodule" resource="Ecommage_FirstModule::first_configuration"/>
+    </menu>
+</config>

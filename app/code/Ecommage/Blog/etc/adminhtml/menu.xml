@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Ecommage_Blog::blog" 
+                title="Blog" 
+                module="Ecommage_Blog" 
+                sortOrder="99" 
+                parent="Ecommage_FirstModule::firstmodule" 
+                resource="Ecommage_Blog::blog"/>
+        <add id="Ecommage_Blog::blog_configuration" 
+                title="Blog configuration" 
+                module="Ecommage_Blog" 
+                sortOrder="99" 
+                parent="Ecommage_Blog::blog" 
+                action="adminhtml/system_config/edit/section/blog" 
+                resource="Ecommage_Blog::blog_configuration"/>
+        <add id="Ecommage_Blog::blog_list" 
+                title="Blog List" 
+                module="Ecommage_Blog" 
+                sortOrder="99" 
+                parent="Ecommage_Blog::blog" 
+                action="ecommage_blog/blog" 
+                resource="Ecommage_Blog::blog_list"/>
+
+    </menu>
+</config>
+      

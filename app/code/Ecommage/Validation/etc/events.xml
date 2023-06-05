@@ -1,0 +1,8 @@
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    <event name="customer_register_success">
+        <observer name="ecommage_validation_event_after_observer" instance="Ecommage\Validation\Observer\RegisterBlog"/>
+    </event>
+    <event name="ecommage_blog_event_after_save1">
+        <observer name="ecommage_blog_event_after_save_observer" instance="Ecommage\Validation\Observer\SaveBlog"/>
+    </event>
+</config>

@@ -1,0 +1,37 @@
+<?php if($block->getBlogHelperData()->isCustomerLogin()): ?>
+    <?php
+        $blogData = $block->getBlogData($block->getBlogId());
+    ?>
+    <form  id="blog-form-data" class="row g-3" action="<?= $block->getBaseUrl(); ?>blog/blog/save">
+    <input type="hidden" name="id" value ="<?= ($blogData->getId()) ? $blogData->getId() : "" ?>" />
+    <input type="hidden" name="form_key" value ="<?= ($blogData->getId()) ? $blogData->getFormKey() : "" ?>" />
+    <div class="col-5">
+        <label for="staticTitle" class="title mp-4"><?= $block->escapeHtml(__('Title')); ?></label>
+        <input type="text"  class="form-control-plaintext" name="title" value="<?= ($blogData->getTitle()) ? $blogData->getTitle() : "" ?>">
+    </div>
+    <div class="form-floating">
+        <textarea class="form-control" placeholder="Leave a comment here" name="content" style="height: 100px">
+        <?= ($blogData->getContent()) ? $blogData->getContent() : "" ?>
+        </textarea>
+        <label for="floatingContent"><?= $block->escapeHtml(__('Content')); ?></label>
+    </div>
+    <select name="status" class="form-select" aria-label="Default select example">
+             <option selected>Open this select menu</option>
+        <?php foreach($block->getBlogHelperData()->getStatus() as $status): ?>       
+                <option value="<?= $status['value'] ?>"><?= $status['label'] ?></option>
+        <?php endforeach; ?>
+    </select>
+    <div class="col-auto"> 
+        <button id="blog-button-data"  type="button" class="btn btn-primary mb-3"><?= $block->escapeHtml(__('Save')); ?></button>
+    </div>
+    </form>
+    <p> <a href="<?= $block->getBaseUrl(); ?>blog/blog/"  class="btn btn-primary"><?= $block->escapeHtml(__('List Blog')); ?></a></p>
+<script type="text/javascript">require(['bootstrap']);</script>
+<?php else: ?>
+        <h2><?= $block->escapeHtml(__('Pls, Login to Edit Post')); ?></h2>
+<?php endif; ?>
+<script type="text/javascript">
+requirejs(['blogrequire'], function(blogrequire) {
+  
+});
+</script>

@@ -1,0 +1,40 @@
+Hello  I am index page
+<?php 
+
+//Get product object by ID
+$id = 1;
+$_product = $block->getProductById($id);
+
+//Get product object by SKU
+// $sku = 'PRODUCT_SKU';
+// $_product = $block->getProductBySku($sku);
+ 
+$imageId = 'product_base_image';
+$width = 200;
+$height = 300;
+ 
+$resizedImageUrl = $block->resizeImage($_product, $imageId, $width, $height)->getUrl();
+?>
+<img src="<?php echo $resizedImageUrl;?>" alt="<?php echo $_product->getTitle();?>" />
+//resize in template
+<?php 
+
+$resizedImageUrl = $block->getImageHelper()
+                        ->init($_product, $imageId)
+                        ->constrainOnly(true)
+                        ->keepAspectRatio(true)
+                        ->keepTransparency(true)
+                        ->keepFrame(false)
+                        ->resize($width, $height)
+                        ->getUrl();
+						?>
+	<img src="<?php echo $resizedImageUrl;?>" alt="<?php echo $_product->getTitle();?>" />
+<?php 
+return; 
+$post = $block->sayHello();
+$post = $block->getPostCollection();
+if($post) {
+	foreach($post as $p) {
+		//echo "<pre>"; print_r($p->getData()); echo "</pre>";
+	}
+}
